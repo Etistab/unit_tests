@@ -74,10 +74,7 @@ public class User {
         return 0;
     }
 
-    public void isValid(){
-        if(EmailValidate() == 1 && NameValidate() == 1 && FirstnameValidate() == 1 && BirthdateValidate() == 1){
-            //Ok
-        }
+    public boolean isValid(){
+        return EmailValidate() == 1 && NameValidate() == 1 && FirstnameValidate() == 1 && BirthdateValidate() == 1;
     }
-
 }
