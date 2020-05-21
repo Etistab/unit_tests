@@ -5,6 +5,12 @@ public class Item {
     private String content;
     private LocalDate creationDate;
 
+    public Item(String name, String content, LocalDate creationDate) {
+        this.name = name;
+        this.content = content;
+        this.creationDate = creationDate;
+    }
+
     public String getContent() {
         return content;
     }
