@@ -20,86 +20,62 @@ public class UserTest {
 
     @Test
     public final void testEmailValidate(){
-        if(user.EmailValidate() == false){
-            fail("email incorrect");
-        }
+        Assert.assertTrue(user.EmailValidate());
     }
 
     @Test
     public final void testNameValidate(){
-        if(user.NameValidate() != 1){
-            fail("nom non renseigné");
-        }
+        Assert.assertTrue(user.NameValidate());
     }
 
     @Test
     public final void testFirstnameValidate(){
-        if(user.FirstnameValidate() != 1){
-            fail("prénom non renseigné");
-        }
+        Assert.assertTrue(user.FirstnameValidate());
     }
 
     @Test
     public final void testPasswordValidate(){
-        if(user.PasswordValidate() == false){
-            fail("prénom non renseigné");
-        }
+        Assert.assertTrue(user.PasswordValidate());
     }
 
     @Test
     public final void testBirthdateValidate(){
-        if(user.BirthdateValidate() != 1){
-            fail("date de naissance non renseigné");
-        }
+        Assert.assertTrue(user.BirthdateValidate());
     }
 
     @Test
     public final void testUserValidate(){
-        if(user.isValid() == false){
-            fail("User non valide");
-        }
+        Assert.assertTrue(user.isValid());
     }
 
     @Test
     public final void testNameIsNull(){
-        if(userNull.NameValidate() == 1){
-            fail("le name est null");
-        }
+        Assert.assertTrue(userNull.NameValidate());
     }
 
     @Test
     public final void testFirstNameIsNull(){
-        if(userNull.FirstnameValidate() == 1){
-            fail("le firstname est null");
-        }
+        Assert.assertFalse(userNull.FirstnameValidate());
     }
 
     @Test
     public final void testPasswordIsNull(){
-        if(userNull.PasswordValidate() == true){
-            fail("le password est trop court");
-        }
+        Assert.assertFalse(userNull.PasswordValidate());
     }
 
     @Test
     public final void testEmailIsNull(){
-        if(userNull.EmailValidate() == true){
-            fail("l'email est null");
-        }
+        Assert.assertFalse(userNull.EmailValidate());
     }
 
     @Test
     public final void testUserTooYoung(){
-        if(userNull.BirthdateValidate() == 1){
-            fail("l'utilisateur est trop jeune");
-        }
+        Assert.assertFalse(userNull.BirthdateValidate());
     }
 
     @Test
     public final void testUnvalidEmail(){
-        if(userWrong.EmailValidate() == true){
-            fail("l'email est incorrect");
-        }
+        Assert.assertFalse(userWrong.EmailValidate());
     }
 
 

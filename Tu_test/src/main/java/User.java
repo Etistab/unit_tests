@@ -68,18 +68,18 @@ public class User {
         }
     }
 
-    public int NameValidate(){
+    public boolean NameValidate(){
         if(this.name != null){
-            return 1;
+            return true;
         }
-        return 0;
+        return false;
     }
 
-    public int FirstnameValidate(){
+    public boolean FirstnameValidate(){
         if(this.firstname != null){
-            return 1;
+            return true;
         }
-        return 0;
+        return false;
     }
 
     public boolean PasswordValidate(){
@@ -91,17 +91,17 @@ public class User {
         return false;
     }
 
-    public int BirthdateValidate(){
+    public boolean BirthdateValidate(){
         if(this.birthdate != null){
             LocalDate.now().minusYears(13).isAfter(this.birthdate);
-            return 1;
+            return true;
             // RAJOUTER VERIFICATION AGE
         }
-        return 0;
+        return false;
     }
 
     public boolean isValid(){
-        if(EmailValidate() == true && NameValidate() == 1 && FirstnameValidate() == 1 && BirthdateValidate() == 1 && PasswordValidate() == true){
+        if(EmailValidate() == true && NameValidate() == true && FirstnameValidate() == true && BirthdateValidate() == true && PasswordValidate() == true){
             return true;
         }
         return false;
