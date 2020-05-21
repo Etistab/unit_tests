@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class ToDoList {
     private User author;
-    private ArrayList<Item> itemList;
+    public ArrayList<Item> itemList;
     private EmailService emailService = new EmailService();
 
     public ToDoList(User author) {
@@ -31,6 +31,10 @@ public class ToDoList {
             }
         }
         return true;
+    }
+
+    public boolean isValid() {
+        return itemList.size() <= 10;
     }
 
     public ArrayList<Item> getItemList() {

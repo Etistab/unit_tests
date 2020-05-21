@@ -1,49 +1,60 @@
 import org.junit.*;
 import java.time.LocalDate;
-import static junit.framework.TestCase.*;
 
 public class ToDoListTest {
-
-    private String example = "Test";
-    private String email = "toto@gmail.com";
-    private LocalDate testDate = LocalDate.now().minusYears(20);
-    private String password = "testetsttest";
-
-
-    private User user = new User(email,example,example,testDate,password);
+    private User user = new User("toto@gmail.com", "Test", "bob", LocalDate.now().minusYears(20), "azerty");
 
     @Test
     public final void listValidate() {
-        if(user.toDoList.getItemList().size() <= 10) {
-            // success
-        } else {
-            fail("list invalide");
+        ToDoList toDoList = new ToDoList(user);
+
+        Assert.assertTrue(toDoList.isValid());
+        for(int i = 0; i < 12; i++) {
+            toDoList.itemList.add(new Item("test", "test", LocalDate.now()));
+            if(i == 10) {
+                Assert.assertTrue(toDoList.isValid());
+            }
         }
+        Assert.assertFalse(toDoList.isValid());
     }
 
     @Test
-    public final void itemsValidate() {
-        Item lastItem = new Item();
-        for (Item i: user.toDoList.getItemList()) {
-            if(i.getContent().length() >= 1000
-                    && !user.toDoList.itemIsUnique(i)
-                    && i.getCreationDate().minusDays(1/48).isAfter(lastItem.getCreationDate())) {
-                fail("item invalide");
-            }
-        }
-        // success
+    public final void itemIsUnique() {
+        ToDoList toDoList = new ToDoList(user);
+
+        toDoList.itemList.add(new Item("test1", "test", LocalDate.now()));
+        Assert.assertTrue(toDoList.itemIsUnique(toDoList.itemList.get(0)));
+        toDoList.itemList.add(new Item("test2", "test", LocalDate.now()));
+        Assert.assertTrue(toDoList.itemIsUnique(toDoList.itemList.get(1)));
+        toDoList.itemList.add(new Item("test2", "test", LocalDate.now()));
+        Assert.assertFalse(toDoList.itemIsUnique(toDoList.itemList.get(2)));
+    }
+
+    @Test
+    public final void itemContentValidate() {
+        ToDoList toDoList = new ToDoList(user);
+
+        toDoList.itemList.add(new Item("test1", "test", LocalDate.now()));
+        Assert.assertTrue(toDoList.itemList.get(0).getContent().length() >= 1000);
+    }
+
+    @Test
+    public final void itemsDateValidate() {
+        ToDoList toDoList = new ToDoList(user);
+
+        toDoList.itemList.add(new Item("test1", "test", LocalDate.now()));
+        toDoList.itemList.add(new Item("test2", "test", LocalDate.now().plusDays(1)));
+        Assert.assertTrue(toDoList.itemList.get(1).getCreationDate().minusDays(1/48).isAfter(toDoList.itemList.get(2).getCreationDate()));
+        toDoList.itemList.add(new Item("test2", "test", LocalDate.now().plusDays(1/100)));
+        Assert.assertFalse(toDoList.itemList.get(2).getCreationDate().minusDays(1/48).isAfter(toDoList.itemList.get(1).getCreationDate()));
     }
 
     @Test
     public final void sendValidate() {
-        User testRecipient = new User();
+        User wrongRecipient = new User("toto@gmail.com", "Test", "bob", LocalDate.now().minusYears(17), "azerty");
         String testMessage = "test message";
 
-        if(LocalDate.now().minusYears(18).isAfter(user.getBirthdate()) &&
-                user.toDoList.getEmailService().send(testRecipient, testMessage)) {
-            //success
-        } else {
-            fail("send invalide");
-        }
+        Assert.assertTrue(user.toDoList.getEmailService().send(user, testMessage));
+        Assert.assertFalse(user.toDoList.getEmailService().send(wrongRecipient, testMessage));
     }
 }
