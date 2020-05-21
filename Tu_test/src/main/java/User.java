@@ -60,12 +60,7 @@ public class User {
     }
 
     public boolean EmailValidate(){
-        if(this.email != null){
-            return false;
-        }else{
-            EmailValidator validator = EmailValidator.getInstance();
-            return validator.isValid(email);
-        }
+        return this.email != null && EmailValidator.getInstance().isValid(email);
     }
 
     public boolean NameValidate(){
@@ -77,7 +72,9 @@ public class User {
 
     public boolean FirstnameValidate(){
         if(this.firstname != null){
-            return true;
+            if(!this.firstname.isEmpty()) {
+                return true;
+            }
         }
         return false;
     }

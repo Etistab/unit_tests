@@ -11,7 +11,7 @@ public class ToDoListTest {
         Assert.assertTrue(toDoList.isValid());
         for(int i = 0; i < 12; i++) {
             toDoList.itemList.add(new Item("test", "test", LocalDate.now()));
-            if(i == 10) {
+            if(i == 9) {
                 Assert.assertTrue(toDoList.isValid());
             }
         }
@@ -35,7 +35,7 @@ public class ToDoListTest {
         ToDoList toDoList = new ToDoList(user);
 
         toDoList.itemList.add(new Item("test1", "test", LocalDate.now()));
-        Assert.assertTrue(toDoList.itemList.get(0).getContent().length() >= 1000);
+        Assert.assertTrue(toDoList.itemList.get(0).contentIsValid());
     }
 
     @Test
@@ -44,7 +44,7 @@ public class ToDoListTest {
 
         toDoList.itemList.add(new Item("test1", "test", LocalDate.now()));
         toDoList.itemList.add(new Item("test2", "test", LocalDate.now().plusDays(1)));
-        Assert.assertTrue(toDoList.itemList.get(1).getCreationDate().minusDays(1/48).isAfter(toDoList.itemList.get(2).getCreationDate()));
+        Assert.assertTrue(toDoList.itemList.get(0).getCreationDate().minusDays(1/48).isAfter(toDoList.itemList.get(1).getCreationDate()));
         toDoList.itemList.add(new Item("test2", "test", LocalDate.now().plusDays(1/100)));
         Assert.assertFalse(toDoList.itemList.get(2).getCreationDate().minusDays(1/48).isAfter(toDoList.itemList.get(1).getCreationDate()));
     }

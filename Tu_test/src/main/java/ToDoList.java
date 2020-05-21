@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class ToDoList {
     private User author;
-    public ArrayList<Item> itemList;
+    public ArrayList<Item> itemList = new ArrayList<>();
     private EmailService emailService = new EmailService();
 
     public ToDoList(User author) {
@@ -25,8 +25,11 @@ public class ToDoList {
     }
 
     public boolean itemIsUnique(Item item) {
+        if (itemList == null) {
+            return true;
+        }
         for (Item i: itemList) {
-            if(i.getName().equals(item.getName())) {
+            if(i != item && i.getName().equals(item.getName())) {
                 return false;
             }
         }
@@ -34,7 +37,7 @@ public class ToDoList {
     }
 
     public boolean isValid() {
-        return itemList.size() <= 10;
+        return itemList != null && itemList.size() <= 10;
     }
 
     public ArrayList<Item> getItemList() {

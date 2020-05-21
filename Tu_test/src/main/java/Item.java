@@ -22,4 +22,8 @@ public class Item {
     public LocalDate getCreationDate() {
         return creationDate;
     }
+
+    public boolean contentIsValid() {
+        return content != null && content.length() <= 1000;
+    }
 }
