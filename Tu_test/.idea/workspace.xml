@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     <list default="true" id="0ecd59b3-6c69-48cf-bca5-171b28200ae2" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/src/main/java/EmailService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -62,8 +63,8 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0ecd59b3-6c69-48cf-bca5-171b28200ae2" name="Default Changelist" comment="" />
-      <created>1588168638525</created>
+      <changelist id="21dc224e-fbf6-4ba4-84b8-2db34e9fe99b" name="Default Changelist" comment="" />
+      <created>1589899930943</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1588168638525</updated>
