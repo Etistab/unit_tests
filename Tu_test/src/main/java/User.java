@@ -9,6 +9,7 @@ public class User {
     private String firstname;
     private LocalDate birthdate;
     private String password;
+    public ToDoList toDoList = new ToDoList(this);
 
     public User(String email, String name, String firstname, LocalDate birthdate,String password) {
         this.email = email;

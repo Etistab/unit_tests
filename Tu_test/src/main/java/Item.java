@@ -1,9 +1,9 @@
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Item {
     private String name;
     private String content;
-    private Date creationDate;
+    private LocalDate creationDate;
 
     public String getContent() {
         return content;
@@ -13,7 +13,7 @@ public class Item {
         return name;
     }
 
-    public Date getCreationDate() {
+    public LocalDate getCreationDate() {
         return creationDate;
     }
 }
