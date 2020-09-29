@@ -6,5 +6,8 @@ pipeline {
                echo 'This is a minimal pipeline.' 
             }
         }
+        stage('Test'){
+            sh 'mvn test'
+        }
     }
 }
